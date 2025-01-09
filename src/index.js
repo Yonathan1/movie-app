@@ -9,10 +9,10 @@ root.render(
     <div className='container'>
       <div className='row'>
         <div className='col'>
-          <AppClass />
-          <HelloWorld />
+          <AppClass msg='Hello, World!'/>
+          <HelloWorld msg='Hello, Again!'/>
         </div>
-      </div>
+      </div> 
     </div>
 
   </React.StrictMode>
