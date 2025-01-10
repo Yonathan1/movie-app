@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-// import AppClass from './AppClass';
+// import App from './App';
+import AppClass from './AppClass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -9,8 +9,8 @@ root.render(
     <div className='container'>
       <div className='row'>
         <div className='col'>
-          <App msg='Hello, Again!'/>
-          {/* <AppClass msg='Hello, World!' /> */}
+          {/* <App msg='Hello, Again!'/> */}
+          <AppClass msg='Hello, World!' />
         </div>
       </div> 
     </div>
