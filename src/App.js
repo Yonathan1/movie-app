@@ -36,6 +36,40 @@ function HelloWorld(props) {
         setCrowd(people);
     }, []);
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(firstname, lastname, dob)
+
+        if (lastname !== "") {
+            addPerson(firstname, lastname, dob);
+        }
+    }
+
+    const addPerson = (newFirstname, newLastname, newDOB) => {
+        let newPerson = {
+            id: crowd.length + 1,
+            firstname: newFirstname,
+            lastname: newLastname,
+            dob: newDOB,
+        }
+
+        const newList = crowd.concat(newPerson);
+
+        const sorted = newList.sort((a, b) => {
+            if (a.lastname < b.lastname) {
+                return -1;
+            } else if (a.lastname > b.lastname) {
+                return 1;
+            }
+            return 0;
+        })
+
+        setCrowd(sorted);
+        setFirstname("");
+        setLastname("");
+        setDob("");
+    }
+
     return (
         <Fragment>
             <h1 className='h1-green'>{props.msg}</h1>
@@ -54,7 +88,7 @@ function HelloWorld(props) {
             <a href='#!' className='btn btn-outline-secondary' onClick={toggleTrue}>Toggle isTrue</a>
             <hr />
 
-            <form autoComplete='off'>
+            <form autoComplete='off' onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label className='form-label' htmlFor='first-name'>First Name</label>
                     <input
@@ -84,6 +118,8 @@ function HelloWorld(props) {
                     className='form-control'
                     onChange={(event) => setDob(event.target.value)}
                 />
+
+                <input type='submit' value='Submit' className='btn btn-primary' />
             </form>
 
             <div>
